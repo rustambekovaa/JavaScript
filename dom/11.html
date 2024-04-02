@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Автопоиск совпадений при вводе</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* ... (ваш стиль) ... */
+</style>
+<body>
+    <div class="wrapper">
+        <h2>Автопоиск совпадений</h2>
+        <form class="form">
+            <input type="text" class="search" placeholder="Название станции..." />
+            <ul class="options">
+                <!-- Изменено: добавил id="searchOptions" -->
+                <li id="searchOptions">станция</li>
+            </ul>
+        </form>
+    </div>
+    <script>
+        const api = `https://gist.githubusercontent.com/VasilyMur/43ef6df83bba694f871f11a16ed7556d/raw/b6edff674e35452d6c57ec64177a558f7adb432e/moscowSubway.json`;
+
+        const stations = [];
+
+        fetch(api)
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(line => {
+                    stations.push(...line.stations);
+                })
+            });
+
+        function getOptions(word, metro) {
+            return stations.filter(s => {
+                const regex = new RegExp(escapeRegExp(word), 'gi');
+                return s.name.match(regex);
+            })
+        }
+
+        function displayStations() {
+            const options = getOptions(this.value, stations);
+            const searchOptions = document.getElementById('searchOptions');
+
+            const html = options.map(station => {
+                const regex = new RegExp(escapeRegExp(this.value), 'gi');
+                const stationName = station.name.replace(regex, `<span class="hl">${this.value}</span>`)
+                return `<li><span>${stationName}</span></li>`;
+            }).slice(0, 10).join('');
+
+            searchOptions.innerHTML = this.value ? html : null;
+        }
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        }
+
+        const searchInput = document.querySelector('.search');
+        searchInput.addEventListener('input', displayStations);
+
+    </script>
+</body>
+</html>

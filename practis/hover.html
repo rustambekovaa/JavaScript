@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=c, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .active{
+        border:4px solid #d0950c;
+    }
+</style>
+<body>
+    <div class="kar">
+        <img src="./thumb-1.jpg" alt="">
+        <img src="./thumb-3.jpg" alt="">
+        <img src="./thumb-4.jpg" alt="">
+    </div>    
+<script>
+    let image = document.querySelectorAll("img")
+    image.forEach((k) =>{
+        k.addEventListener('mouseenter',() =>{
+        image.forEach((l) => l.classList.remove('active'))
+        k.classList.add('active')
+    })  
+    })
+    
+</script>
+</body>
+</html> 

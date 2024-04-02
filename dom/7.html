@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            width: 100%;
+        }
+
+        td {
+            width: 100%;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        table thead {
+            width: 100%;
+
+        }
+
+        table {
+            max-width: 70vw;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        table tr {
+            /* border: 1px solid black; */
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        main>div div {
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+        .active {
+            fill: yellow;
+        }
+
+        svg {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <form id="newList">
+            <input type="text" name="title" placeholder="Title" id="newTitle">
+            <input type="text" name="desc" placeholder="Desc" id="newDesc">
+            <button class="px-2 py-1 bg-green-500 hover:bg-green-700">
+                <h1>Add</h1>
+            </button>
+        </form>
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Title</td>
+                <td>Desc</td>
+                <td>ID</td>
+                <td>
+                    <input id="search-input" placeholder="Search" type="text">
+                </td>
+                <td>
+                    <button onclick="deleteAllCheckedItems()"
+                        class="delete-checked-elem hidden px-2 py-1 bg-red-500 hover:bg-red-700">DELETE</button>
+                </td>
+                <td>
+                    <select  name="" id="sort-data">
+                        <option selected value="index">По Index</option>
+                        <option value="id">По ID</option>
+                        <option value="title">По Title</option>
+                        <option value="desc">По Desc</option>
+                        <option value="isComplete">По isComplete</option>
+                    </select>
+
+                </td>
+            </tr>
+        </thead>
+        <tbody id="dataList">
+            <tr>
+                <td>1</td>
+                <td>JS</td>
+                <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab corporis magnam culpa ratione natus
+                    voluptas omnis accusantium nam tempora praesentium quidem ea vel fuga libero ipsa, quam perspiciatis
+                    dolore? Vero?</td>
+                <td>2</td>
+                <td>
+                    <button class="px-2 py-1 bg-red-500 hover:bg-red-700">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let checkedElements = []
+        let newFormList = document.getElementById('newList')
+        let searchInput = document.getElementById('search-input')
+        searchInput.oninput = searchElementList
+        let sortData = document.getElementById("sort-data")
+        
+
+        function handleAddList(event) {
+            event.preventDefault()
+            let formData = new FormData(newFormList)
+            formData = Object.fromEntries(formData.entries())
+            formData.id = +new Date()
+            data.push(formData)
+            addDataList()
+            event.target.reset()
+        }
+        let data = [
+            {
+                id: 1,
+                title: 'JS',
+                desc: 'Sf jhsjfdsjhd jhsjd hjs ',
+                isComplete: false
+            },
+            {
+                id: 2,
+                title: 'Python',
+                desc: 'Sf jhsjfdsjhd jhsjd hjs ',
+                isComplete: false
+            },
+            {
+                id: 3,
+                title: 'SAFSAF',
+                desc: 'Sf jhsjfdsjhd jhsjd hjs ',
+                isComplete: true
+            }
+        ]
+        function addDataList(data) {
+            console.table(data);
+            checkedElements = data.filter(({ isComplete }) => isComplete).map(item => item.id)
+            let ourButton = document.querySelector('.delete-checked-elem')
+            if (checkedElements.length) {
+                ourButton.classList.remove('hidden')
+            } else {
+                ourButton.classList.add('hidden')
+            }
+            let tbody = document.getElementById('dataList')
+            let newTbody = document.createElement('tbody')
+            newTbody.id = 'dataList'
+            data.forEach((item, index) => {
+                let tr = document.createElement('tr')
+                tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${item.title}</td>
+                <td>${item.desc}</td>
+                <td>${item.id}</td>
+                <td>${item.isComplete}</td>
+                <td>
+                    <input class="data-list-check" data="${item.id}"  ${item.isComplete ? 'checked="true"' : null}   type="checkbox" />
+                     </td>
+                <td>
+                    <button onclick="deleteItem(${item.id})" class="px-2 py-1 bg-red-500 hover:bg-red-700">
+                        delete
+                    </button>
+                </td>
+                `
+                newTbody.append(tr)
+            })
+            tbody.replaceWith(newTbody)
+            let inputs = document.querySelectorAll('.data-list-check')
+            if (inputs.length) {
+                for (let item of inputs) {
+                    item.onchange = check
+                }
+            }
+        }
+        addDataList(data)
+        function deleteItem(id) {
+            if (confirm('Точно хочешь?')) {
+                data = data.filter(item => item.id != id)
+                addDataList(data)
+            }
+        }
+        function check(event) {
+            let id = event.currentTarget.getAttribute('data')
+            let isCheck = event.currentTarget.checked
+            data = data.map(item => item.id == id ? ({ ...item, isComplete: isCheck }) : item)
+            addDataList(data)
+        }
+        function deleteAllCheckedItems() {
+            data = data.filter(item => !checkedElements.includes(item.id))
+            addDataList(data)
+        }
+       
+        function searchElementList(event) {
+            let value = event.currentTarget.value
+            if (value) {
+                let newData = data.filter(({ title }) => title.toLowerCase().includes(value.toLowerCase()))
+                addDataList(newData)
+            } else {
+                addDataList(data)
+            }
+        }
+        
+        newFormList.onsubmit = handleAddList
+    </script>
+    <script src="./7.js"></script>
+</body>
+</html>

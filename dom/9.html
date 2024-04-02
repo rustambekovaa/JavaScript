@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        * {
+            /* user-select: none; */
+        }
+
+        .flowers_block{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 10px;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex mt-10" >
+        <div class=" flex w-2/6 table mt-5">
+            <div class="categories_block flex-col ml-20">
+                <div class="flex gap-20 hover:text-green-500 cursor-pointer">
+                    <p>Flower</p>
+                    <p>(12)</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="">
+        <div class=" navigation w-full flex justify-center items-center  ">
+            <nav class=" flex justify-center gap-10">
+                <a class=" active" href="">All Plants</a>
+                <a href="">New Arrivals</a>
+                <a href="">Sale</a>
+            </nav>
+            <select class=" flex ml-80" name="" id=" sort-data">
+                <option value="id">Default sorting</option>
+                <option value="id">Default sorting</option>
+                <option value="id">Default sorting</option>
+                <option value="id">Default sorting</option>
+
+            </select>
+        </div>
+        <div class="flowers_block  flex  flex-grid">
+            <div class="px-4 py-2 rounded-xl bg-blue-300 ">
+                <h1>Romashka</h1>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+
+
+    <script>
+        let data = [
+            {
+                id: 1,
+                title: 'Romashka',
+                catId: 1,
+            }, {
+                id: 2,
+                title: 'Liliya',
+                catId: 2,
+            }, {
+                id: 3,
+                title: 'Dollar',
+                catId: 3,
+            }, {
+                id: 4,
+                title: 'December',
+                catId: 3,
+            }, {
+                id: 5,
+                title: 'Kaktus',
+                catId: 1,
+            }, {
+                id: 6,
+                title: 'Tulpan',
+                catId: 2,
+            }, {
+                id: 7,
+                title: 'Kolokolchiki',
+                catId: 3,
+            }, {
+                id: 8,
+                title: 'Gipsofila',
+                catId: 3,
+            },
+            {
+                id: 1,
+                title: 'Romashka',
+                catId: 1,
+            }, {
+                id: 2,
+                title: 'Liliya',
+                catId: 2,
+            }, {
+                id: 3,
+                title: 'Dollar',
+                catId: 3,
+            }, {
+                id: 4,
+                title: 'December',
+                catId: 3,
+            }, {
+                id: 5,
+                title: 'Kaktus',
+                catId: 1,
+            }, {
+                id: 6,
+                title: 'Tulpan',
+                catId: 2,
+            }, {
+                id: 7,
+                title: 'Kolokolchiki',
+                catId: 3,
+            }, {
+                id: 8,
+                title: 'Gipsofila',
+                catId: 3,
+            },
+        ]
+        let categories = [
+            {
+                id: 1,
+                title: 'House'
+            }, {
+                id: 2,
+                title: 'Streen'
+            }, {
+                id: 3,
+                title: 'Small'
+            },
+        ]
+        let prevActiveCat;
+
+        function addCatList() {
+            let catBlock = document.querySelector('.categories_block')
+            catBlock.innerHTML = ''
+            categories.forEach((item, index) => {
+                catBlock.innerHTML += `   <div data="${item.id}" class="flex  ${index == 0 ? 'text-green-500' : ''} gap-20 hover:text-green-500 cursor-pointer">
+                <p>${item.title}</p>
+                <p>(${data.filter(el => el.catId == item.id).length})</p>
+            </div>`
+            })
+            for (let item of catBlock.children) {
+                item.onclick = () => {
+                    if (!prevActiveCat) {
+                        let a = catBlock.querySelector('.text-green-500')
+                        if (a) {
+                            prevActiveCat = a
+                        }
+                    }
+                    if (prevActiveCat) {
+                        prevActiveCat.classList.remove('text-green-500')
+                    }
+                    addFlowerList(item.getAttribute('data'))
+                    item.classList.add('text-green-500')
+                    prevActiveCat = item
+                }
+            }
+
+        } function addFlowerList(catId = 1) {
+            let flowerBlock = document.querySelector('.flowers_block')
+            flowerBlock.innerHTML = ''
+
+            data.filter(item => {
+                if (item.catId == catId) {
+                    flowerBlock.innerHTML += `   <div class="px-4 py-2 rounded-xl bg-blue-300 ">
+                <h1>${item.title}</h1>
+            </div>`
+                }
+            })
+
+        }
+
+        addCatList()
+        addFlowerList()
+
+    </script>
+
+    <!-- <script src="./main.js"></script> -->
+</body>
+
+</html>

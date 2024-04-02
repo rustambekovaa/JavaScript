@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            font-family: sans-serif;
+            list-style: none;
+        }
+        .container{
+            width: 1211px;
+            padding-top: 42px;
+            padding-left: 120px;    
+        }
+        .header_items{
+            display: flex;
+            align-items: center;
+        }
+        .header_items_nav{
+            display: flex;
+            align-items: center;
+            gap: 300px;
+        }
+        .nav{
+            display: flex;
+            gap: 40px;
+        }
+        .btn{
+            width: 100px;
+            height: 35px;
+            background: #46A358;
+            text-align: center; 
+            border-radius: 6px;
+            }
+        .text_right{
+            display: flex;
+            gap: 30px;
+            padding-left: 150px;
+            
+        }
+
+
+
+
+
+        .popup{
+            position: fixed; 
+            width: 100%;
+            height: 100%;
+            background-color: #00000085;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+
+        }
+        .popup2{
+            position: fixed; 
+            width: 100%;
+            height: 100%;
+            background-color: #00000085;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+
+        }
+        .popup:target{
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup__body{
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px,10px;
+        }
+        .popup__content{
+            background-color: #fff;
+            color: #000;
+            width: 500px;
+            height: 600px;
+            /* min-width: 800px; */
+            padding: 30px;
+            position: relative;
+        }
+        .popup__close{
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .reglog{
+            position: absolute;
+            top: 100px;
+            
+        }
+        .reglog a{
+            text-decoration: none;
+            color: #3D3D3D;
+        }
+        .p1{
+            position: absolute;
+            top: 100px;
+            top: 160px;
+            color: #3D3D3D;
+        }
+        .input{
+            position: absolute;
+            top: 200px;
+            width: 50vw;      
+            display: flex; 
+            justify-content: center;
+            align-items: center;    
+            flex-direction: column;   
+        }
+        .inputbox{
+            position: relative;
+            margin: 22px 0;
+            width: 338px;
+            border: 0px solid #0b0b0b83;
+            display: flex;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+
+        }
+            .inputbox:focus {
+        border-color: #007bff; /* Измените на цвет вашего выбора */
+        }
+        .inputbox label{
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            color: #131313bb;
+            font-size: 1em;
+            pointer-events: none;
+            transition: .5s;
+        }
+        input:focus ~ label,
+        input:valid ~ label{
+        top: -5px;
+        }
+        .inputbox input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            padding:0 35px 0 5px;
+            border-bottom: 3px solid #ccc;
+            color: #060505;
+            transition: border-color 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+        /* .inputbox ion-icon{
+            position: absolute;
+            right: 8px;
+            color: #0b0a0a;
+            font-size: 1.2em;
+            top: 20px;
+
+        } */
+        .inputbox input:focus {
+        border-color: rgb(38, 157, 74); /* Цвет рамки при фокусе */
+        }
+        .btn2 button{
+            width: 338px;
+            height: 45px;
+            border-radius: 5px;
+            background: #46A358;
+            color: #fff;
+            border: none;
+            margin-top: 50px;
+        }
+        .btn3 button{
+            cursor: pointer;
+            /* position: absolute; */
+            width: 338px;
+            height: 45px;
+            border-radius: 5px;
+            color: #6d5d5d;
+            border: none;
+            margin-top: 20px;
+            align-items: center ;
+            padding-top: 15px;
+            flex-direction: column;   
+        }
+        .btn4 button{
+            cursor: pointer;
+            /* position: absolute; */
+            width: 338px;
+            height: 45px;
+            border-radius: 5px;
+            color: #6d5d5d;
+            border: none;
+            margin-top: 20px;
+            align-items: center ;
+            padding-top: 15px;
+            flex-direction: column;   
+        }
+            
+
+        .register1{
+            display: none;
+        }
+
+        .register1.active{
+            display: block;
+        }
+
+    </style>   
+</head>
+<body>
+     
+    <header class="container">
+        <div class="header_items">
+            <div class="header_items_nav">
+                <a href="#">
+                  <img src="./action/svg/logo.svg" alt="">
+                </a>
+                <nav class="nav">
+                    <a style=" text-decoration: none; color: black;  " href="#">Home</a>
+                    <a style=" text-decoration: none; color: #3D3D3D;  " href="#">Shop</a>
+                    <a style=" text-decoration: none; color: #3D3D3D;  " href="#">Plant Care</a>
+                    <a style=" text-decoration: none; color: #3D3D3D; " href="#">Blogs</a>
+                </nav>
+            </div>
+            <div class="text_right">
+                <img src="./action/svg/search.svg" alt="">
+                <img src="./action/svg/korzin.svg" alt="">
+                
+                <div class="btn">
+                    <!-- <a href="#popup " style="text-decoration: none; padding-top: 20px; color: #fff; "> Label</a> -->
+              <a href="#popup"><button   style=" align-items: center; background: none; border: none; color: aliceblue; padding-top: 10px; size: 20px; cursor: pointer;">     Login</button>
+              </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="popup" class="popup">
+        <div class="popup__body">
+            <div class="popup__content"> 
+                <a href="#header" class="popup__close">X</a>
+            </div>
+            <div class="reglog">
+                <a style="color: #46A358; size: 16px;" href="#">Login  </a>
+                <a id="register1" href="#">  | Register</a>
+            </div>
+            <p class="p1">Enter your username and password to login.</p>
+            <form id="register"  class="input" action="" >
+                <!-- <label class="bg-blue-500" for="">
+                    Email
+                    <input style=" width: 329px; ;
+                    height: 35px;" name="name" type="text">
+                </label>
+                <div class="inbox">
+                    <label class="bg-blue-500 " class="flex " for="input-password">
+                        <input  style="width: 329px; height: 35px; margin-top: 15px; position: relative;" name="password" id="input-password" type="password" >
+                        <img style="position: absolute; padding-top: 20px; padding-right: -30px; text-align: center; " src="./action/svg/glaz.svg" alt="">    
+                    </label> -->
+                <!-- </div> -->
+                    <div class="inputbox">
+                        <input type="email" required>
+                        <label for="">Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" id="password" name="password" required>
+                        <label for="">Password</label>
+                        <img id="toggleVisibility" style="right: -20px;color: #0b0a0a; font-size: 1.2em; top: 20px; padding-right: 10px; cursor: pointer;" src="./action/svg/glaz.svg" alt="">
+                    </div>
+                    <a style="padding-left: 200px;text-decoration: none; color: #46A358;" href="#">Forgot Password?</a>
+                    <div class="btn2">
+                        <button  id="login" style="cursor: pointer;">Login</button>
+                    </div>
+                    <h3 style="text-align: center; color: #3D3D3D; font-family: Cera Pro; margin-top: 20px;">
+                        ----------Or login with---------
+                    </h3>
+                    <div class="btn3">
+                        <button>Login with Google</button>                        
+                    </div>
+                    <div class="btn4">
+                        <button>Login with Facebook</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="popup2" class="popup2">
+        <div class="popup__body">
+            <div class="popup__content"> 
+                <a href="#header" class="popup__close">X</a>
+            </div>
+            <div class="reglog">
+                <p style="color: #46A358; size: 16px;" href="#">Login  </p>
+                <p id="register1" href="#">  | Register</p>
+            </div>
+            <p class="p1">Enter your username and password to login.</p>
+            <form id="register"  class="input" action="" >
+                    <div class="inputbox">
+                        <input type="email" required>
+                        <label for="">Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" id="password" name="password" required>
+                        <label for="">Password</label>
+                        <img id="toggleVisibility" style="right: -20px;color: #0b0a0a; font-size: 1.2em; top: 20px; padding-right: 10px; cursor: pointer;" src="./action/svg/glaz.svg" alt="">
+                    </div>
+                    <a style="padding-left: 200px;text-decoration: none; color: #46A358;" href="#">Forgot Password?</a>
+                    <div class="btn2">
+                        <button  id="login" style="cursor: pointer;">Login</button>
+                    </div>
+                    <h3 style="text-align: center; color: #3D3D3D; font-family: Cera Pro; margin-top: 20px;">
+                        ----------Or login with---------
+                    </h3>
+                    <div class="btn3">
+                        <button>Login with Google</button>                        
+                    </div>
+                    <div class="btn4">
+                        <button>Login with Facebook</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+<script src="./register.js">
+
+</script>
+</html>

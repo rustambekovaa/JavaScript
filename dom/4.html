@@ -1,0 +1,179 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    li {
+      cursor: pointer;
+      user-select: none;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 5px;
+      transition: margin 0.2s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+<ul id="sortable-list">
+  <li>1Хлеб</li>
+  <li>2Чай</li>
+  <li>3Масло</li>
+  <li>4Мука</li>
+  <li>5Сахар</li>
+</ul>
+
+<script>
+  let draggedItem = null;
+
+  document.querySelectorAll('#sortable-list li').forEach(item => {
+    item.draggable = true;
+
+    item.addEventListener('dragstart', function (e) {
+      draggedItem = this;
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', this.innerHTML);
+    });
+
+    item.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      const boundingBox = this.getBoundingClientRect();
+      const offset = e.clientY - boundingBox.top - boundingBox.height / 2;
+      const isDraggingDown = offset > 0;
+      this.style.marginBottom = isDraggingDown ? '15px' : '';
+      this.style.marginTop = isDraggingDown ? '' : '15px';
+    });
+
+    item.addEventListener('dragleave', function () {
+      this.style.marginTop = '';
+      this.style.marginBottom = '';
+    });
+
+    item.addEventListener('drop', function () {
+      if (draggedItem !== this) {
+        const dropHTML = draggedItem.innerHTML;
+        draggedItem.innerHTML = this.innerHTML;
+        this.innerHTML = dropHTML;
+
+        // Обновляем порядок элементов в массиве
+        const items = Array.from(document.querySelectorAll('#sortable-list li'));
+        const draggedIndex = items.indexOf(draggedItem);
+        const currentIndex = items.indexOf(this);
+
+        if (currentIndex > draggedIndex) {
+          items.splice(currentIndex + 1, 0, items.splice(draggedIndex, 1)[0]);
+        } else {
+          items.splice(currentIndex, 0, items.splice(draggedIndex, 1)[0]);
+        }
+
+        // Обновляем порядок внутри списка
+        document.getElementById('sortable-list').innerHTML = '';
+        items.forEach(item => document.getElementById('sortable-list').appendChild(item));
+      }
+
+      this.style.marginTop = '';
+      this.style.marginBottom = '';
+    });
+
+    item.addEventListener('dragend', function () {
+      draggedItem = null;
+    });
+  });
+</script>
+
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+
+
+    <section class="register-forms w-full bg-black bg-opacity-50 flex t-0 l-0 justify-center items-center h-screen ">
+        <form id="register" class="w-[50vw] min-h-[50vh] bg-white flex justify-center items-center flex-col" action="">
+            <div class="flex gap-[20px]">
+                <h1>Register</h1>
+                <button type="button" class="bg-red-500 px-3 py-1 rounded-lg hover:text-white">X</button>
+            </div>
+            <label class="bg-blue-500 p-2" for="">
+                <input name="name" type="text">
+            </label>
+            <label class="bg-blue-500 p-2" class="flex m-2" for="input-password">
+                <input name="password" id="input-password" type="password">
+                <p class="text-white">Password</p>
+            </label>
+            <input class="bg-black rounded-lg px-2 py-1 text-white" type="submit" value="SEND">
+        </form>
+    </section>
+
+
+    <script>
+        let users = [
+            {
+                id: 1,
+                name: 'Muslima',
+                password: '1234'
+            },
+            {
+                id: 2,
+                name: 'Akmaanai',
+                password: '4321'
+            }
+        ]
+
+        let form = document.getElementById('register')
+        function handleSubmit(e) {
+            e.preventDefault()
+            let data = new FormData(form)
+            data = Object.fromEntries(data.entries())
+            console.log(data);
+            let user = users.find(item => item.name == data.name && item.password == data.password)
+            if (user) {
+                alert('HELLO ' + data.name)
+            } else {
+                alert('ERROR')   
+            }
+        }
+        form.onsubmit = handleSubmit
+
+        let buttonClose = document.querySelector('section form button')
+        buttonClose.onclick = (e) => {
+            form.parentElement.classList.add('hidden')
+        }
+
+
+      
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

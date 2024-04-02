@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        /* * {
+            user-select: none;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class=" flex mt-10">
+        <div class="w-2/6 flex ml-8">
+            <div class="categories_block flex-col">
+                <div class="flex gap-20 hover:text-green-500 cursor-pointer">
+                    <p>Flower</p>
+                    <p>(12)</p>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-1000">
+            <div class="  navigation  flex justify-center items-center ">
+                <nav class=" flex justify-center gap-10">
+                    <a class=" active" href="">All Plants</a>
+                    <a href="">New Arrivals</a>
+                    <a href="">Sale</a>
+                </nav>
+                <select class=" flex ml-80" name="" id=" sort-data">
+                    <option value="id">Default sorting</option>
+                    <option value="id">Default sorting</option>
+                    <option value="id">Default sorting</option>
+                    <option value="id">Default sorting</option>
+    
+                </select>
+            </div>
+            <div class="flowers_block mt-5 justify-center items-center flex flex-wrap">
+                <div class="  ">
+                    <img src="" alt="">
+                    <h1>Romashka</h1>
+                </div>
+            </div>  
+            <div class="pagination_btn  flex gap-2  ">
+                <button class="px-2 py-1  border-2 border-green-500 rounded-xl bg-green-500">1</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let data = [
+            {
+                id: 1,
+                title: 'Romashka',
+                catId: 1,
+                url:'./flower.png'
+            }, {
+                id: 2,
+                title: 'Liliya',
+                catId: 2,
+                url:'./flower3.png'
+            }, {
+                id: 3,
+                title: 'Dollar',
+                catId: 3,
+                url:'./flower2.png'
+            }, {
+                id: 4,
+                title: 'December',
+                catId: 3,
+                url:'./flowers4.png'
+            }, {
+                id: 5,
+                title: 'Kaktus',
+                catId: 1,
+                url:'./flowers4.png'
+            }, {
+                id: 6,
+                title: 'Tulpan',
+                catId: 2,
+                url:'./flowers4.png'
+            }, {
+                id: 7,
+                title: 'Kolokolchiki',
+                catId: 3,
+                url:'./flower2.png'
+            }, {
+                id: 8,
+                title: 'Gipsofila',
+                catId: 3,
+                url:'./flowers4.png'
+            },
+            {
+                id: 1,
+                title: 'Romashka',
+                catId: 1,
+                url:'./flowers4.png'
+            }, {
+                id: 2,
+                title: 'Liliya',
+                catId: 2,
+                url:'./flower2.png'
+            }, {
+                id: 3,
+                title: 'Dollar',
+                catId: 3,
+                url:'./flowers4.png'
+            }, {
+                id: 4,
+                title: 'December',
+                catId: 3,
+                url:'./flower2.png'
+            }, {
+                id: 5,
+                title: 'Arhideya',
+                catId: 1,
+                url:'./flower.png'
+            },
+            {
+                id: 9,
+                title: 'Arhideya',
+                catId: 1,
+                url:'./flower.png'
+            }, {
+                id: 6,
+                title: 'Tulpan',
+                catId: 2,
+                url:'./flower2.png'
+            }, {
+                id: 7,
+                title: 'Kolokolchiki',
+                catId: 3,
+                url:'./flower.png'
+            }, {
+                id: 8,
+                title: 'Gipsofila',
+                catId: 3,
+                url:'./flower.png'
+            }, {
+                id: 1,
+                title: 'Romashka',
+                catId: 1,
+                url:'./flower.png'
+            }, {
+                id: 2,
+                title: 'Liliya',
+                catId: 2,
+                url:'./flower.png'
+            }, {
+                id: 3,
+                title: 'Dollar',
+                catId: 3,
+                url:'./flowers4.png'
+            }, {
+                id: 4,
+                title: 'December',
+                catId: 3,
+                url:'./flowers4.png'
+            }, {
+                id: 5,
+                title: 'Kaktus',
+                catId: 1,
+                url:'./flowers4.png'
+            }, {
+                id: 6,
+                title: 'Tulpan',
+                catId: 2,
+                url:'./flowers4.png'
+            }, {
+                id: 7,
+                title: 'Kolokolchiki',
+                catId: 3,
+                url:'./flowers4.png'
+            }, {
+                id: 8,
+                title: 'Gipsofila',
+                catId: 3,
+                url:'./flower.png'
+            },
+            {
+                id: 1,
+                title: 'Romashka',
+                catId: 1,
+                url:'./flowers4.png'
+            }, {
+                id: 2,
+                title: 'Liliya',
+                catId: 2,
+                url:'./flower.png'
+            }, {
+                id: 3,
+                title: 'Dollar',
+                catId: 3,
+                url:'./flowers4.png'
+            }, {
+                id: 4,
+                title: 'December',
+                catId: 3,
+                url:'./flower2.png'
+            }, {
+                id: 5,
+                title: 'Arhideya',
+                catId: 1,
+                url:'./flower.png'
+            },
+            {
+                id: 9,
+                title: 'Arhideya',
+                catId: 1,
+                url:'./flower.png'
+            }, {
+                id: 6,
+                title: 'Tulpan',
+                catId: 2,
+                url:'./flower.png'
+            }, {
+                id: 7,
+                title: 'Kolokolchiki',
+                catId: 3,
+                url:'./flower.png'
+            }, {
+                id: 8,
+                title: 'Gipsofila',
+                catId: 3,
+                url:'./flower.png'
+            },
+        ]
+        let categories = [
+            {
+                id: 1,
+                title: 'House'
+            }, {
+                id: 2,
+                title: 'Streen'
+            }, {
+                id: 3,
+                title: 'Small'
+            },
+        ]
+        let prevActiveCat;
+        let page = 1
+        function addCatList() {
+            let catBlock = document.querySelector('.categories_block')
+            catBlock.innerHTML = ''
+            categories.forEach((item, index) => {
+                catBlock.innerHTML += `   <div data="${item.id}" class="flex ${index == 0 ? 'text-green-500' : ''} gap-20 hover:text-green-500 cursor-pointer">
+                <p>${item.title}</p>
+                <p>(${data.filter(el => el.catId == item.id).length})</p>
+            </div>`
+            })
+            for (let item of catBlock.children) {
+                item.onclick = () => {
+                    if (!prevActiveCat) {
+                        let a = catBlock.querySelector('.text-green-500')
+                        if (a) {
+                            prevActiveCat = a
+                        }
+                    }
+                    if (prevActiveCat) {
+                        prevActiveCat.classList.remove('text-green-500')
+                    }
+                    addFlowerList(item.getAttribute('data'))
+                    item.classList.add('text-green-500')
+                    prevActiveCat = item
+                }
+            }
+        }
+        function addFlowerList(catId = 1, page = 1) {
+            let flowerBlock = document.querySelector('.flowers_block');
+            flowerBlock.innerHTML = '';
+            let catData = data.filter(item => item.catId == catId);
+            catData.slice(6 * (page - 1), page*6).forEach((item, index) => {
+                flowerBlock.innerHTML += `<div class="px-4 py-2 rounded-xl">
+                    <img src="${item.url}" alt="">
+                    <h1>${item.title}</h1>
+                </div>`;
+            });
+            let btns = document.querySelector('.pagination_btn');
+            btns.innerHTML = '';
+
+            for (let i = 1; Math.ceil(catData.length / 6) >= i; i++) {
+                btns.innerHTML +=  `<button onclick="addFlowerList(${catId}, ${i})" class="px-2 py-1 border-2 border-green-500 rounded-xl ${i == page ? 'bg-green-500' : ''}"> ${i}</button>`;
+            }
+        }
+        addCatList()
+        addFlowerList()
+
+    </script>
+
+    <script src="./10.js"></script>
+</body>
+
+</html>

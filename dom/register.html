@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            list-style: none;
+        }
+
+        .container {
+            width: 1211px;
+            padding-top: 42px;
+            padding-left: 120px;
+        }
+
+        .header_items {
+            display: flex;
+            align-items: center;
+        }
+
+        .header_items_nav {
+            display: flex;
+            align-items: center;
+            gap: 300px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .btn {
+            width: 100px;
+            height: 35px;
+            background: #46A358;
+            text-align: center;
+            border-radius: 6px;
+        }
+
+        .text_right {
+            display: flex;
+            gap: 30px;
+            padding-left: 150px;
+
+        }
+
+
+
+
+
+        .popup {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #00000085;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+
+        }
+
+        .popup2 {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #00000085;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+
+        }
+
+        .popup:target {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup__body {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px, 10px;
+        }
+
+        .popup__content {
+            background-color: #fff;
+            color: #000;
+            width: 500px;
+            height: 600px;
+            /* min-width: 800px; */
+            padding: 30px;
+            position: relative;
+        }
+
+        .popup__close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .reglog {
+            position: absolute;
+            top: 100px;
+
+        }
+
+        .reglog a {
+            text-decoration: none;
+            color: #3D3D3D;
+        }
+
+        .p1 {
+            position: absolute;
+            top: 100px;
+            top: 160px;
+            color: #3D3D3D;
+        }
+
+        .input {
+            position: absolute;
+            top: 200px;
+            width: 50vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .inputbox {
+            position: relative;
+            margin: 22px 0;
+            width: 338px;
+            border: 0px solid #0b0b0b83;
+            display: flex;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+
+        }
+
+        .inputbox:focus {
+            border-color: #007bff;
+            /* Измените на цвет вашего выбора */
+        }
+
+        .inputbox label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            color: #131313bb;
+            font-size: 1em;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        input:focus~label,
+        input:valid~label {
+            top: -5px;
+        }
+
+        .inputbox input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            padding: 0 35px 0 5px;
+            border-bottom: 3px solid #ccc;
+            color: #060505;
+            transition: border-color 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+
+        /* .inputbox ion-icon{
+            position: absolute;
+            right: 8px;
+            color: #0b0a0a;
+            font-size: 1.2em;
+            top: 20px;
+
+        } */
+        .inputbox input:focus {
+            border-color: rgb(38, 157, 74);
+            /* Цвет рамки при фокусе */
+        }
+
+        .btn2 button {
+            width: 338px;
+            height: 45px;
+            border-radius: 5px;
+            background: #46A358;
+            color: #fff;
+            border: none;
+            margin-top: 50px;
+        }
+
+        .btn3 button {
+            cursor: pointer;
+            /* position: absolute; */
+            width: 338px;
+            height: 45px;
+            border-radius: 5px;
+            color: #6d5d5d;
+            border: none;
+            margin-top: 20px;
+            align-items: center;
+            padding-top: 15px;
+            flex-direction: column;
+        }
+
+        .btn4 button {
+            cursor: pointer;
+            /* position: absolute; */
+            width: 338px;
+            height: 45px;
+            border-radius: 5px;
+            color: #6d5d5d;
+            border: none;
+            margin-top: 20px;
+            align-items: center;
+            padding-top: 15px;
+            flex-direction: column;
+        }
+
+
+        .register1 {
+            display: none;
+        }
+
+        .register1.active {
+            display: block;
+        }
+
+        .header_items_nav nav .active {
+            border-bottom: 1px solid green;
+        }
+
+        .activedModal {
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="container">
+        <div class="header_items">
+            <div class="header_items_nav">
+                <a href="#">
+                    <img src="./action/svg/logo.svg" alt="LOGO">
+                </a>
+                <nav class="nav w-full">
+                    <a class="  " style=" text-decoration: none; color: black;  " href="#">Home</a>
+                    <a style=" text-decoration: none; color: #3D3D3D;  " href="#">Shop</a>
+                    <a style=" text-decoration: none; color: #3D3D3D;  " href="#">Plant Care</a>
+                    <a style=" text-decoration: none; color: #3D3D3D; " href="#">Blogs</a>
+                </nav>
+            </div>
+            <div class="text_right">
+                <img src="./action/svg/search.svg" alt="">
+                <img src="./action/svg/korzin.svg" alt="">
+
+                <button class="loginActiveBtn px-4 py-1 text-white bg-green-500 hover:bg-green-800 rounded-lg ">
+                    Login
+                </button>
+            </div>
+        </div>
+    </header>
+    <div onclick="handleCloseModal(event)"
+        class="loginForm hidden bg-black bg-opacity-50 absolute w-full h-screen top-0 left-0 flex justify-center items-center">
+        <form class="bg-white p-5 rounded-xl grid gap-4" action="">
+            <button type="button" onclick="handleCloseModal()"
+                class="closer-btn w-full px-4 py-2 bg-blue-500">X</button>
+            <div class="flex w-full justify-between">
+                <p class="cursor-pointer border-b-2 border-green-500">Login</p>|
+                <p onclick="openRegisterForm()" class="cursor-pointer">Regiter</p>
+
+            </div>
+            <label class="border-2 p-2" for="">
+                <input type="text">
+            </label>
+            <label class="border-2 p-2" for="">
+                <input type="password">
+            </label>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <div onclick="handleCloseModal(event)"
+        class="registerForm hidden bg-black bg-opacity-50 absolute w-full h-screen top-0 left-0 flex justify-center items-center">
+        <form class="bg-white p-5 rounded-xl grid gap-4" action="">
+            <button type="button" onclick="handleCloseModal(event)"
+                class="closer-btn w-full px-4 py-2 bg-blue-500">X</button>
+            <div class="flex w-full justify-between">
+                <p onclick="openLoginForm()" class="cursor-pointer ">Login</p>|
+                <p class="cursor-pointer border-b-2 border-green-500">Regiter</p>
+
+            </div>
+            <label class="border-2 p-2" for="">
+                <input type="text">
+            </label>
+            <label class="border-2 p-2" for="">
+                <input type="password">
+            </label>
+            <button type="submit">Register</button>
+        </form>
+
+    </div>
+
+    <script>
+        let links = document.querySelectorAll('.header_items_nav nav a')
+        let prev = document.querySelector('.header_items_nav nav .active')
+        function handleActiveNav(e) {
+            if (prev) {
+                prev.classList.remove('active')
+            }
+            e.target.classList.add('active')
+            prev = e.target
+        }
+        for (item of links) {
+            item.onclick = handleActiveNav
+        }
+
+
+
+        ////////////////////////////////
+
+
+        let loginForm = document.querySelector('.loginForm')
+        let loginButton = document.querySelector('.loginActiveBtn')
+        let registerForm = document.querySelector('.registerForm')
+        let prevModal;
+
+
+        function openLoginForm() {
+            if (prevModal) {
+                prevModal.classList.add('hidden')
+            }
+            loginForm.classList.remove('hidden')
+            prevModal = loginForm
+
+        }
+        loginButton.onclick = openLoginForm
+
+        function handleCloseModal(e) {
+            if (e.target.classList.contains('loginForm') || e.target.classList.contains('closer-btn')) {
+                loginForm.classList.add('hidden')
+                registerForm.classList.add('hidden')
+
+            } else if (e.target.classList.contains('registerForm') || e.target.classList.contains('closer-btn')) {
+                registerForm.classList.add('hidden')
+                loginForm.classList.add('hidden')
+            }
+        }
+
+
+        function openRegisterForm() {
+            if (prevModal) {
+                prevModal.classList.add('hidden')
+            }
+            registerForm.classList.remove('hidden')
+            prevModal = registerForm
+        }
+    </script>
+</body>
+
+
+</html>

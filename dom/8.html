@@ -1,0 +1,163 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+
+    <style>
+        * {
+            /* user-select: none; */
+            padding: 0;
+            margin: 20px auto;
+        }
+
+        .block {
+            padding: 40px;
+            border: 1px solid black;
+            max-width: 80px;
+            cursor: pointer;
+
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body class="flex flex-wrap gap-2">
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+
+    <script>
+
+        function addGreen() {
+            for (let item of block) {
+                item.classList.add('green')
+            }
+        }
+
+        function removeGreen() {
+            for (let item of block) {
+                item.classList.remove('green')
+            }
+        }
+        let block = document.querySelectorAll('.block')
+        for (let item of block) {
+            item.addEventListener('click', (e) => {
+                if (e.target.classList.contains('green')) {
+                    addGreen()
+                    e.target.classList.remove('green')
+                }
+                else {
+                    let activeBlock = document.querySelectorAll('.green')
+                    if (activeBlock.length > 1) {
+                        removeGreen()
+                        e.target.classList.add('green')
+                    } else {
+                        removeGreen()
+                        e.target.classList.add('green')
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+
+    <style>
+        * {
+            /* user-select: none; */
+            padding: 0;
+            margin: 20px auto;
+        }
+
+        .block {
+            padding: 30px;
+            border: 1px solid black;
+            cursor: pointer;
+            width: 10px;
+            height: 20px;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body class="flex flex-wrap ">
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+
+    <script>
+
+    function addGreen(index) {
+        block[index].classList.add('green');
+        if (index > 0) {
+            block[index - 1].classList.add('green');
+        }
+        if (index < block.length - 1) {
+            block[index + 1].classList.add('green');
+        }
+    }
+
+    function removeGreen() {
+        for (let item of block) {
+            item.classList.remove('green');
+        }
+    }
+
+    let block = document.querySelectorAll('.block');
+    for (let i = 0; i < block.length; i++) {
+        block[i].addEventListener('click', (e) => {
+            if (e.target.classList.contains('green')) {
+                addGreen(i);  
+                e.target.classList.remove('green');
+            } else {
+                let activeBlock = document.querySelectorAll('.green');
+                if (activeBlock.length > 1) {
+                    removeGreen();
+                    e.target.classList.add('green');
+                } else {
+                    removeGreen();
+                    e.target.classList.add('green');
+                }
+            }
+        });
+    }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            width: 100%;
+        }
+
+        td {
+            width: 100%;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        table thead {
+            width: 100%;
+
+        }
+
+        table {
+            max-width: 70vw;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        table tr {
+            /* border: 1px solid black; */
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        main>div div {
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+        .active {
+            fill: yellow;
+        }
+
+        svg {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <form id="newList">
+            <input type="text" name="title" placeholder="name" id="newTitle">
+            <input type="text" name="desc" placeholder="surname" id="newDesc">
+            <button class="px-2 py-1 bg-green-500 hover:bg-green-700">
+                <h1>Add</h1>
+            </button>
+        </form>
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>name</td>
+                <td>surname</td>
+                <td>ID</td>
+                <td>posesharmost</td>
+                <td></td>
+                <td class="mousmove()">check</td>
+
+
+            </tr>
+        </thead>
+        <tbody id="dataList">
+            <tr>
+                <td>1</td>
+                <td>JS</td>
+                <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab corporis magnam culpa ratione natus
+                    voluptas omnis accusantium nam tempora praesentium quidem ea vel fuga libero ipsa, quam perspiciatis
+                    dolore? Vero?</td>
+                <td>2</td>
+                <td>
+                    <button class="px-2 py-1 bg-red-500 hover:bg-red-700">
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        let newFormList = document.getElementById('newList')
+
+        function handleAddList(event) {
+            event.preventDefault()
+            let formData = new FormData(newFormList)
+            formData = Object.fromEntries(formData.entries())
+            formData.id = +new Date()
+            data.push(formData)
+            addDataList()
+            event.target.reset()
+        }
+
+
+        let data = [
+            {
+                id: 1,
+                title: 'Akmaanai',
+                desc: ' Bekova',
+                pos: false,
+            },
+            {
+                id: 2,
+                title: 'Maanai',
+                desc: 'Bekova',
+                pos: false,
+
+            },
+            {
+                id: 3,
+                title: 'Mmkf',
+                desc: 'Lmnssssss',
+                pos: false,
+
+            },
+
+        ]
+        function addDataList() {
+    let tbody = document.getElementById('dataList');
+    let newTbody = document.createElement('tbody');
+    newTbody.id = 'dataList';
+
+    data.forEach((item, index) => {
+        let tr = document.createElement('tr');
+        tr.innerHTML += `
+            <td>${index + 1}</td>
+            <td>${item.title}</td>
+            <td>${item.desc}</td>
+            <td>${item.id}</td>
+            <td>${false}</td>
+            <td>
+                <button onclick="deleteItem(${item.id})" class="px-2 py-1 bg-red-500 hover:bg-red-700">
+                    delete
+                </button>
+            </td>
+        `;
+
+        if (item.title !== "") {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            
+
+            const label = document.createElement('label');
+            // label.textContent = item.title;
+
+            tr.appendChild(checkbox);
+            tr.appendChild(label);
+
+            // Вывод в консоль информации о чекбоксе
+            console.log(`Checkbox for item ${item.id} added.`);
+        } else {
+            tr.innerHTML = `<td colspan="2"></td>`;
+        }
+
+        newTbody.append(tr);
+    });
+
+    tbody.replaceWith(newTbody);
+}
+function addDataList() {
+    let tbody = document.getElementById('dataList');
+    let newTbody = document.createElement('tbody');
+    newTbody.id = 'dataList';
+
+    data.forEach((item, index) => {
+        let tr = document.createElement('tr');
+        tr.innerHTML += `
+            <td>${index + 1}</td>
+            <td>${item.title}</td>
+            <td>${item.desc}</td>
+            <td>${item.id}</td>
+            <td>${false}</td>
+            <td>
+                <button onclick="deleteItem(${item.id})" class="px-2 py-1 bg-red-500 hover:bg-red-700">
+                    delete
+                </button>
+            </td>
+        `;
+
+        if (item.title !== "") {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+
+            const label = document.createElement('label');
+            // label.textContent = item.title;
+
+            tr.appendChild(checkbox);
+            tr.appendChild(label);
+        } else {
+            tr.innerHTML = `<td colspan="2"></td>`;
+        }
+
+        newTbody.append(tr);
+    });
+
+    tbody.replaceWith(newTbody);
+}
+
+addDataList();
+function deleteItem(id) {
+    if (confirm('Точно хочешь?')) {
+        data = data.filter(item => item.id != id);
+        addDataList();
+    }
+}
+newFormList.onsubmit = handleAddList;
+
+function handleClick(e) {
+    const checkboxIndex = Array.from(checkboxes).indexOf(e.target);
+
+    if (checkboxIndex !== -1) {
+        const currentItem = data[checkboxIndex];
+        currentItem.pos = !currentItem.pos;
+        console.log(currentItem);
+
+
+    }
+
+
+}
+
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleClick));
+        </script>
+
+    <script src="./6crud.js"></script>
+
+</body>
+
+</html>

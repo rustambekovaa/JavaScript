@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        * {
+            /* user-select: none; */
+        }
+
+        .block {
+            padding: 40px;
+            border: 1px solid black;
+            max-width: 80px;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body class="flex flex-wrap gap-2 justify-center">
+    <table>
+        <thead>
+            <th><input type="text" placeholder="search"></th>
+        </thead>
+        <tbody>
+            <tr>
+                <p id="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod modi doloremque adipisci
+                    ipsa non quae perferendis illum debitis odio vero. Vel ea alias facilis dolor voluptatibus
+                    perferendis. Iure, quis illo.</p>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <script>
+        let data = [
+            {
+                id: 1,
+                title: 'Muslima',
+                desc: 'Lorem askmd kka nkak kd kak sknk'
+            },
+            {
+                id: 2,
+                title: 'Belek',
+                desc: 'asdsad askmd asdsad nkak kd kak sknk'
+            },
+            {
+                id: 3,
+                title: 'Samagan',
+                desc: 'Wertt sdf asdsad 221 kd kak sknk'
+            },
+            {
+                id: 4,
+                title: 'Akmaanai',
+                desc: 'qwer zxc asdsad 221 kd kak sknk'
+            },
+            {
+                id: 5,
+                title: 'Amantur',
+                desc: 'amantur zxc asdsad 221 kd kak sknk'
+            },
+        ]
+
+        let myInput = document.querySelector('input')
+        myInput.oninput = function (e) {
+            let myP = document.querySelector('#desc')
+            let text = myP.textContent
+            if (e.target.value) {
+                let newText = text.split(' ').map(item => item.includes(e.target.value) ? `<span class="yellow">${item}</span>` : item).join(' ')
+                console.log(newText);
+                myP.innerHTML = newText
+            } else {
+                myP.innerHTML = text
+            }
+
+        }
+    </script>
+
+
+
+
+    <!-- <script src="./main.js"></script> -->
+
+
+
+</body>
+
+</html>
