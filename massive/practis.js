@@ -273,6 +273,6 @@
   
 
 
-  let calc = new Calculator;
- console.log(calc.calculate("3 + 7"));
+//   let calc = new Calculator;
+//  console.log(calc.calculate("3 + 7"));
  

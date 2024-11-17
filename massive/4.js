@@ -94,7 +94,6 @@ let people = [
 
 // function delId( id){
 //     for (let i = 0; i < people.length; i++) {
-//         console.log(i);
 //         if (people[i].id === id) {
 //           people.splice(i, 1);
 //           break; 
@@ -151,16 +150,16 @@ let people = [
 
 
 
-function showPeople(start, end, arg) {
-    for (let i = 1; i < people.length; i++) {
-      if (people[i].id >= start && people[i].id <= end) {
-          people[i]= arg;
-      }
-    }
-  }
+// function showPeople(start, end, arg) {
+//     for (let i = 1; i < people.length; i++) {
+//       if (people[i].id >= start && people[i].id <= end) {
+//           people[i]= arg;
+//       }
+//     }
+//   }
   
-  showPeople(2, 5,"*");
-  console.log(people);
+//   showPeople(2, 5,"*");
+//   console.log(people);
 
 
 
@@ -170,7 +169,7 @@ function showPeople(start, end, arg) {
 
 
 
-// const arr = [[1, 2, 3, 4], [10, 22, 4, 7], [10, 11, 5, 4]];
+// const arr = [[7, 2, 3, 4], [10, 22, 4, 7], [10, 11, 5, 4]];
 // let k = 0;
 
 // for (let i = 0; i < arr.length; i++) {
@@ -213,20 +212,66 @@ let foods = [
         cost:150 
     },    { 
         id:3, 
-        name:'cola', 
+       
         catid:3, 
         cost:200 
     }, 
   ]
+
   let custmers = [ 
     { 
         id:1, 
         foods:[1,2,2,2,3,3,1] 
     },    { 
         id:2, 
-        foods:[1,2,3,1] 
+        foods:[1,2,3,1]  
     }, 
   ]
+
+  function find(id){
+    let newobj = {}
+    for(let i of custmers){
+      if(i.id == id){
+        for( j of i.foods){
+            if(j in newobj){
+                newobj[j] += 1
+            }
+            else{
+                newobj[j] = 1
+            }    
+        }
+      }
+    }
+    console.log(newobj);
+  }
+  find(1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   function cFoods(id){
 //     let k = {}
 //     for( i of custmers){
@@ -245,39 +290,39 @@ let foods = [
 //  console.log( cFoods(1));
 
 
-function getTop3(id){
-    let k = {}
-    for( i of custmers ){
-        if(i.id == id){
-            for ( i2 of foods ){
-                for( let i3 = 0; i3 < i.foods.length; i3++ ){
-                    if( i2.catid == i3){
-                        if( [i2.cost] in k){
-                            k[i3] += i2.cost
-                        }
-                        else{
-                            k[i3] = i2.cost 
-                        }
-                    }
-                }
+// function getTop3(id){
+//     let k = {}
+//     for( i of custmers ){
+//         if(i.id == id){
+//             for ( i2 of foods ){
+//                 for( let i3 = 0; i3 < i.foods.length; i3++ ){
+//                     if( i2.catid == i3){
+//                         if( [i2.cost] in k){
+//                             k[i3] += i2.cost
+//                         }
+//                         else{
+//                             k[i3] = i2.cost 
+//                         }
+//                     }
+//                 }
                
-            }
-        }
-    }
-    let v = {};
-    let maxCost = -Infinity;
-    for (let r in k) {
-      if (k[r] > maxCost) {
-        maxCost = k[r];
-      }
-    }
+//             }
+//         }
+//     }
+//     let v = {};
+//     let maxCost = -Infinity;
+//     for (let r in k) {
+//       if (k[r] > maxCost) {
+//         maxCost = k[r];
+//       }
+//     }
   
-    for (let r in k) {
-      if (k[r] === maxCost) {
-        v[r] = k[r];
-      }
-    } 
-  console.log(v);
-   console.log(k); 
-}
-getTop3(2)
+//     for (let r in k) {
+//       if (k[r] === maxCost) {
+//         v[r] = k[r];
+//       }
+//     } 
+//   console.log(v);
+//    console.log(k); 
+// }
+// getTop3(2)

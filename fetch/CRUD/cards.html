@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container mx-auto px-4 mt-5">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9" id="posts">
+        </div>
+    </div>
+
+    <script>
+        let sleep = (three) => new Promise(res => setTimeout(() => res(), three * 1000));
+        let posts = document.querySelector('#posts');
+
+        const main = async () => {
+            const qp = new URLSearchParams({ use_pagination: false }).toString()
+            let resolve = await fetch(`https://news-api.prolabagency.com/api/v1/news/?${qp}`)
+            if (resolve.status === 200) {
+                let data = await resolve.json()
+                posts.innerHTML = ''
+                for (i of data) {
+                    posts.innerHTML += `
+                    <div class="w-full p-2">
+                        <div class="bg-white rounded-lg shadow-lg">
+                          <img src="${i.image}" alt="${i.name}" class="w-full h-48 object-cover rounded-t-lg">
+                          <div class="p-4">
+                            <h5 class="text-xl font-bold mb-2">${i.id}) ${i.name}</h5>
+                            <div class = " ">
+                            <p class="text-gray-700">${i.category.name}</p>
+                            <a href="./details.html?news=${i.id}">
+                            <button class="bg-pink-600 w-full text-white p-2 rounded"">посмотреть</button>
+                            </a>
+                            <a href="./update.html?news=${i.id}">
+                            <button class="bg-pink-600  w-full mt-3 text-white p-2 rounded">Изменить</button>
+                            </a>
+                          
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                }
+            }
+        }
+        main();
+    </script>
+</body>
+
+</html>

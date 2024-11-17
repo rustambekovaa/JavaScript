@@ -3,22 +3,22 @@ let foods = {
         id: 1, 
         name: "Burger", 
         objId: 1, 
-        cost: 150, 
-        discId: 1, 
+        cost: 250, 
+        discId: 2, 
     }, 
     food2: { 
         id: 2, 
         name: "ChickenBurger", 
         objId: 1, 
-        cost: 170, 
-        discId: 2, 
+        cost: 470, 
+        discId: 1, 
     }, 
     food3: { 
         id: 3, 
         name: "Pizza Pay", 
         objId: 2, 
-        cost: 150, 
-        discId: 3 
+        cost: 350, 
+        discId: 3
     }, 
 } 
 
@@ -26,17 +26,20 @@ let foods = {
 let discount = { 
     discount1: { 
         id: 1, 
-        title: 0
+        title: "20%"
     }, 
     discount2: { 
         id: 2, 
-        title: 0 
+        title: "10%"
     }, 
     discount3: { 
         id: 3, 
-        title: 0 
+        title: "15%"
     }, 
 } 
+
+
+
 let clients = { 
     client1: { 
         id: 1, 
@@ -51,6 +54,11 @@ let clients = {
         }, 
     } 
 }
+
+
+
+
+
 
 function getTotal(){
     let total = 0 
@@ -72,9 +80,9 @@ function getTotal(){
 }
 getTotal()
 
-let obj = {
 
-}
+
+
 
 // function User(name, surname, prolab) {
 //     for (let key in obj) {

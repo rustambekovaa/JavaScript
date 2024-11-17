@@ -44,6 +44,33 @@ let user = {
 };
 
 
+// function getTop1() {
+//   let top = {};
+//   let value = ''
+//   let userKey = ''
+//   for (let i = 0; i < 3; i++) {
+//     let fix = 0
+//     for (let key in user) {
+//       if (!fix) {
+//         value = user[key]
+//         userKey = key  
+//         fix++
+//         continue
+//       }
+//       if (user[key].salary > value.salary) {
+//         value = user[key]
+//         userKey = key
+//       }
+//     }
+//     top[userKey] = value
+//     delete user[userKey]
+//   }
+//   console.log(top);
+// }
+// getTop1()
+
+
+
 function getTop1() {
   let top = {};
   let value = ''
@@ -65,13 +92,9 @@ function getTop1() {
     top[userKey] = value
     delete user[userKey]
   }
-
   console.log(top);
 }
 getTop1()
-
-
-
 
 
 // function getTop1() {

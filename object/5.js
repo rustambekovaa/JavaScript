@@ -55,6 +55,8 @@ let user = {
       cost: 150, 
     }, 
   };
+
+  
 function id(){
     let k=0
     for ( i in user){

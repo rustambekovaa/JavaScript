@@ -65,7 +65,7 @@ function get(user){
     }
     alert(k1) 
 }
-get(name) 
+get("Nurmuhammed") 
 
 
 

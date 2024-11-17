@@ -15,9 +15,9 @@ let arr = [
       salary: "20$", 
     }, 
     { 
-      id: 4, 
+      id: 4,    
       name: "Sarvinbek", 
-      salary: "1000som", 
+      salary: "100som", 
     }, 
     { 
       id: 5, 
@@ -52,9 +52,11 @@ let arr = [
       } 
     }) 
     console.log(result); 
-  }getUser(1000, 5000)
+  } 
+  
+getUser(1000, 10000)
  
-
+ 
 
 
 

@@ -22,32 +22,13 @@ let users = [
     }
 ]
 
-// let form = document.getElementById('register')
-// function handleSubmit(e) {
-//     e.preventDefault()
-//     let data = new FormData(form)
-//     data = Object.fromEntries(data.entries())
-//     console.log(data);
-//     let user = users.find(item => item.name == data.name && item.password == data.password)
-//     if (user) {
-//         alert('HELLO ' + data.name)
-//     } else {
-//         alert('ERROR')   
-//     }
-// }
-// form.onsubmit = handleSubmit
-
-// let buttonClose = document.querySelector('section form button')
-// buttonClose.onclick = (e) => {
-//     form.parentElement.classList.add('hidden')
-// }
-// const loginIt = document.getElementById('login')
 
 let registerLink= document.getElementById('register1')
 let popup2= document.getElementById('popup2')
 registerLink.addEventListener("click", ()=>{
     popup2.classList.toggle("active")
 })
+
 
 let form = document.getElementById('register');
 
@@ -75,3 +56,24 @@ buttonClose.onclick = (e) => {
 };
 
 
+
+// let form = document.getElementById('register')
+// function handleSubmit(e) {
+//     e.preventDefault()
+//     let data = new FormData(form)
+//     data = Object.fromEntries(data.entries())
+//     console.log(data);
+//     let user = users.find(item => item.name == data.name && item.password == data.password)
+//     if (user) {
+//         alert('HELLO ' + data.name)
+//     } else {
+//         alert('ERROR')   
+//     }
+// }
+// form.onsubmit = handleSubmit
+
+// let buttonClose = document.querySelector('section form button')
+// buttonClose.onclick = (e) => {
+//     form.parentElement.classList.add('hidden')
+// }
+// const loginIt = document.getElementById('login')

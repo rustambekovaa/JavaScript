@@ -276,54 +276,55 @@ let clients = {
   },
 };
 
-// function get3(){
-//   let bill = 0 
-//   let top ={}
-//   let k1 = 0
-//   // let k2 = 0
-//   // let k3 = 0
-//   for( i in category){
-//     for ( i2 in rooms){
-//       if( category[i].id == rooms[i2].catId){
-//         for( i3 in clients){
-//           if ( rooms[i2].id == clients[i3].roomId ){
-//             bill =(clients[i3].people*rooms[i2].costPerson)*clients[i3].days+rooms[i2].cost  
-//             top[clients[i3].id] = bill
+function get3(){
+  let bill = 0 
+  let top ={}
+  let k1 = 0
+  // let k2 = 0
+  // let k3 = 0
+  for( i in category){
+    for ( i2 in rooms){
+      if( category[i].id == rooms[i2].catId){
+        for( i3 in clients){
+          if ( rooms[i2].id == clients[i3].roomId ){
+            bill =(clients[i3].people*rooms[i2].costPerson)*clients[i3].days+rooms[i2].cost  
+            top[clients[i3].id] = bill
             
             
-//           }
-//         }
-//       }
-//     }
-//   }
+          }
+        }
+      }
+    }
+  }
+  console.log(top);
   
-//   for( i4 in top){
-//     let k0 = top[i4]
-//     if( k0 > k1){ 
-//       k1 = k0
-//     }
-//   }
+  // for( i4 in top){
+  //   let k0 = top[i4]
+  //   if( k0 > k1){ 
+  //     k1 = k0
+  //   }
+  // }
 
-// console.log(top);
+console.log(top);
 // console.log(k1);
-// }
-// get3()
+}
+get3()
 
 
 
 // for( i4 in top){
 //   let k0 = top[i4]
 //   if( k0 > k1){ 
-    // k3 = k2
-    // k2 = k1
-    // k1 = k0
-  // }
-  // else if( k0 > k2){
-  //   k3 = k2
-  //   k2 = k0
-  // }else if( k0 > k3){
-  //   k3 = k0     
-  // }
+//     k3 = k2
+//     k2 = k1
+//     k1 = k0
+//   }
+//   else if( k0 > k2){
+//     k3 = k2
+//     k2 = k0
+//   }else if( k0 > k3){
+//     k3 = k0     
+//   }
 // }
 // console.log(top);
 // console.log(k1);
@@ -357,28 +358,28 @@ let clients = {
 // sortTopTotal()
 
 
-function getTT() { 
-  let grade = {}; 
-  for (let key in category) { 
-    let total = 0; 
-    for (let key2 in rooms) { 
-      if (category[key]["id"] === rooms[key2]["catId"]) { 
-        for (let key3 in clients) { 
-          if (clients[key3]["roomId"] === rooms[key2]["id"]) { 
-            total += rooms[key2]["cost"] +  clients[key3]["people"] * rooms[key2]["costPerson"] * clients[key3]["days"]; 
-          } 
-        } 
-      } 
-    } 
-    grade[category[key]["name"]] = total; 
-  } 
-  console.log(grade); 
-  let maxTotal = 0;  
-  for (let key in grade) { 
-    if (grade[key] > maxTotal) { 
-      maxTotal = grade[key]; 
-    } 
-  } 
-  console.log(maxTotal); 
-} 
-getTT();
+// function getTT() { 
+//   let grade = {}; 
+//   for (let key in category) { 
+//     let total = 0; 
+//     for (let key2 in rooms) { 
+//       if (category[key]["id"] === rooms[key2]["catId"]) { 
+//         for (let key3 in clients) { 
+//           if (clients[key3]["roomId"] === rooms[key2]["id"]) { 
+//             total += rooms[key2]["cost"] +  clients[key3]["people"] * rooms[key2]["costPerson"] * clients[key3]["days"]; 
+//           } 
+//         } 
+//       } 
+//     } 
+//     grade[category[key]["name"]] = total; 
+//   } 
+//   console.log(grade); 
+//   let maxTotal = 0;  
+//   for (let key in grade) { 
+//     if (grade[key] > maxTotal) { 
+//       maxTotal = grade[key]; 
+//     } 
+//   } 
+//   console.log(maxTotal); 
+// } 
+// getTT();

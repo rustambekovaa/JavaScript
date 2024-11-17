@@ -3,7 +3,7 @@ let customer = {
     id: 1,
     name: "Majid",
     foods: {
-      0:      1,
+      0: 1,
       1: 2,
     }
   },

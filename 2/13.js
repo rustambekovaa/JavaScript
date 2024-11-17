@@ -1,7 +1,7 @@
 let bill = 0
 let money = 1000
 let card = ""
-let film1 = "Аватар"
+let film1 = "Аватар "
 let film2 = "Разбой"
 let filmCost = 120
 let drink1 = "Кола"
@@ -12,7 +12,8 @@ let popkornCost = 120
 let discount=100
 
 let films = +prompt(`1) ${film1} \n2) ${film2}`)
-if (films == 1) {
+
+if (films == 1) { 
     card += film1
     let filmCount = +prompt("Сколько билетов")
     card += " " + filmCount + "шт."

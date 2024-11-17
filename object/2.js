@@ -35,7 +35,7 @@
 // console.log(k("Akmaanai"));
 
 
-//Напишите функцию JavaScript, которая проверяет, является ли переданная строка палиндромом? Палиндром - это слово,
+// Напишите функцию JavaScript, которая проверяет, является ли переданная строка палиндромом? Палиндром - это слово,
 // фраза или последовательность, которые читаются так же, как вперед, назад, например, level.
 
 
@@ -271,14 +271,14 @@
 
 // let getId = (id) =>{
 //   for(let key in users){
-//     if ( users[key].name == id){
+//     if ( users[key].id == id){
 //       console.log( users[key].name);
 //     }
 //   }
 
 
 // } 
-// getId("akmaanai")
+// getId(5)
 
 
 
@@ -330,55 +330,62 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
 // let category = {
-//   cat1:{
-//     id:1,
-//     name:"Fast food"
+//   cat1: {
+//     id: 1,
+//     name: "Fast food"
 //   },
-//   cat2:{
-//     id:2,
-//     name:"Drink"
+//   cat2: {
+//     id: 2,
+//     name: "Drink"
 //   },
 // }
 
 // let foods = {
-//   food1:{
-//     id:1,
-//     name:"Burger",
-//     catID:1,
-//     cost:150
+//   food1: {
+//     id: 1,
+//     name: "Burger",
+//     catID: 1,
+//     cost: 150
 //   },
-//   food2:{
-//     id:2,
-//     name:"Shaurma",
-//     catID:1,
-//     cost:120
+//   food2: {
+//     id: 2,
+//     name: "Shaurma",
+//     catID: 1,
+//     cost: 120
 //   },
-//   food3:{
-//     id:3,
-//     name:"Pizza",
-//     catID:1,
-//     cost:200
+//   food3: {
+//     id: 3,
+//     name: "Pizza",
+//     catID: 1,
+//     cost: 200
 //   },
-//   food4:{
-//     id:4,
-//     name:"Cola",
-//     catID:2,
-//     cost:80
+//   food4: {
+//     id: 4,
+//     name: "Cola",
+//     catID: 2,
+//     cost: 80
 //   },
-//   food5:{
-//     id:5,
-//     name:"Pepsi",
-//     catID:2,
-//     cost:80
+//   food5: {
+//     id: 5,
+//     name: "Pepsi",
+//     catID: 2,
+//     cost: 80
 //   },
-//   food6:{
-//     id:6,
-//     name:"Adrenaline",
-//     catID:2,
-//     cost:120
+//   food6: {
+//     id: 6,
+//     name: "Adrenaline",
+//     catID: 2,
+//     cost: 120
 //   },
 // }
+
+
+
+
 
 // function getTotalByCAtID(id){
 //   let total = 0
@@ -615,25 +622,25 @@
 ////////////////////////////////////////////////////////////////////////////
 
 
-// let obj={
-//   per1:{
-//     name:"Majid",
-//     pas:1234,
-//     age:2005
-//   }
-// }
-// function letAge(name,pass,year){
-//   var age2=0
-//   for (let i in obj){
-//     if(obj[i].name==name && obj[i].pas==pass && obj[i].age<year){
-//       age2=year-obj[i].age
-//       // console.log(`Name: ${name} \n Age:${year-age}`);
-//     }
-//   }
-//   return age2
-// }
-
-// console.log(letAge("Majid",1234,2030));
+let obj={
+  per1:{
+    name:"Majid",
+    pas:1234,
+    age:2005
+  }
+}
+function letAge(name,pass,year){
+  var age2=0
+  for (let i in obj){
+    if(obj[i].name==name && obj[i].pas==pass && obj[i].age<year){
+      age2=year-obj[i].age
+      // console.log(`Name: ${name} \n Age:${year-age}`);
+    }
+  }
+  return age2
+}
+letAge("Majid",1234,2024)
+console.log();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -712,104 +719,107 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 
 
-let users = {
-  user1: {
-    id: 1,
-    name: "Majid",
-    age: 18,
-    monye: 2000,
-  },
-  user2: {
-    id: 2,
-    name: "Oroz",
-    age: 58,
-    monye: 2000,
-  }, user3: {
-    id: 3,
-    name: "Baybolot",
-    age: 19,
-    monye: 2000,
-  }
-}
+// let users = {
+//   user1: {
+//     id: 1,
+//     name: "Majid",
+//     age: 18,
+//     monye: 2000,
+//   },
+//   user2: {
+//     id: 2,
+//     name: "Oroz",
+//     age: 58,
+//     monye: 2000,
+//   }, user3: {
+//     id: 3,
+//     name: "Baybolot",
+//     age: 19,
+//     monye: 2000,
+//   }
+// }
 
 
 
-let foods = {
-  food1: {
-    id: 1,
-    name: "samsa",
-    cost: 90,
-  },
-  food2: {
-    id: 2,
-    name: "manty",
-    cost: 140,
-  }, food3: {
-    id:3,
-    name: "oromo",
-    cost: 130,
-  }
-}
+// let foods = {
+//   food1: {
+//     id: 1,
+//     name: "samsa",
+//     cost: 90,
+//   },
+//   food2: {
+//     id: 2,
+//     name: "manty",
+//     cost: 140,
+//   }, food3: {
+//     id:3,
+//     name: "oromo",
+//     cost: 130,
+//   }
+// }
 
-let custumers = {
-  custemer1: {
-    id: 1,
-    userId: 1,
-    foods: { 1: 2, 3: 2, 2: 5, }
-  }, custemer2: {
-    id: 2,
-    userId: 3,
-    foods: { 2: 2, 1: 2, 3: 5, }
-  }, custemer3: {
-    id: 3,
-    userId: 2,
-    foods: { 3: 2, 2: 5, 1: 5, 2: 3, }
-  },
-  custemer4: {
-    id: 3,
-    userId: 2,
-    foods: { 3: 2, 2: 5, 1: 5, 2: 3, }
-  }
-}
-let custemerTotal = (cusId) => {
-  let cus = {}
-  let total = 0
-  for (let cusT in custumers) {
-    if (custumers[cusT].id == cusId) {
-      cus = custumers[cusT]
-      break
+// let custumers = {
+//   custemer1: {
+//     id: 1,
+//     userId: 1,
+//     foods: { 1: 2, 3: 2, 2: 5, }
+//   }, custemer2: {
+//     id: 2,
+//     userId: 3,
+//     foods: { 2: 2, 1: 2, 3: 5, }
+//   }, custemer3: {
+//     id: 3,
+//     userId: 2,
+//     foods: { 3: 2, 2: 5, 1: 5, 2: 3, }
+//   },
+//   custemer4: {
+//     id: 3,
+//     userId: 2,
+//     foods: { 3: 2, 2: 5, 1: 5, 2: 3, }
+//   }
+// }
+// let custemerTotal = (cusId) => {
+//   let cus = {}
+//   let total = 0
+//   for (let cusT in custumers) {
+//     if (custumers[cusT].id == cusId) {
+//       cus = custumers[cusT]
+//       break
 
-    }
-  }
-  for (let k in cus["foods"]) {
-    for (let p in foods) {
-      if (foods[p].id == k) {
-        total += cus.foods[k] * foods[p].cost
-      }
-    }
-  }
+//     }
+//   }
+//   for (let k in cus["foods"]) {
+//     for (let p in foods) {
+//       if (foods[p].id == k) {
+//         total += cus.foods[k] * foods[p].cost
+//       }
+//     }
+//   }
 
-  for (let key in users) {
-    if (cus.userId == users[key].id) {
-      users[key].monye -= total
-      console.log(users[key].monye);
-    }
-  }  
-}
+//   for (let key in users) {
+//     if (cus.userId == users[key].id) {
+//       users[key].monye -= total
+//       console.log(users[key].monye);
+//     }
+//   }  
+// }
+
 // custemerTotal(2)
-console.log(custumers);
 
-let newCustemer = (userId, foods) => {
-  let key = Object.values(custumers).at(-1).id + 1
-  custumers[`custemer${key}`] = {
-    id: key,
-    userId: userId,
-    foods: foods,
-  }
-  
 
-}
-newCustemer(3,{ 3: 2, 2: 5, 1: 5, 2: 3, })
+// console.log(custumers);
+
+// let newCustemer = (userId, foods) => {
+//   let key = Object.values(custumers).at(-1).id + 1
+//   custumers[`custemer${key}`] = {
+//     id: key,
+//     userId: userId,
+//     foods: foods,
+//   }
+
+
+// }
+// newCustemer(3,{ 3: 2, 2: 5, 1: 5, 2: 3, })
 
 
 // console.log(custumers)
@@ -923,12 +933,12 @@ newCustemer(3,{ 3: 2, 2: 5, 1: 5, 2: 3, })
 //       for (let foods2  in foods){
 //         if (custumers[key]["foods"][key2]==foods[foods2].id){
 //           custumers[key]["foods"][key2]=foods[foods2 ]
-          
+
 
 //         }
 
 //       }
-   
+
 //     }
 //   }
 // }
@@ -940,7 +950,7 @@ newCustemer(3,{ 3: 2, 2: 5, 1: 5, 2: 3, })
 //     custemer1: {
 //       id: 1,
 //       userId: 1,
-  
+
 //       foods: { 0: 2, 1: 2, 2: 3, }
 //     }, custemer2: {
 //       id: 2,
@@ -974,9 +984,9 @@ newCustemer(3,{ 3: 2, 2: 5, 1: 5, 2: 3, })
 //       cost: 130,
 //     }
 // }
-  
+
 // function newId(){
-   
+
 // }
 
 
@@ -1081,5 +1091,132 @@ newCustemer(3,{ 3: 2, 2: 5, 1: 5, 2: 3, })
 // });
 
 // console.log(car); // { make: 'Honda', model: 'Accord', year: 2019 }
+
+
+
+// let username = "Argen Hello Hi hallo"
+// if(username.includes("Hi")){
+//   console.log('HELLO');
+// }
+
+
+
+// let username = 'Hello, Argen! How are you?'
+// if(username.endsWith("you")){
+//   console.log("WOW");
+// }
+// else{
+//   console.log('OH NOOOOOO!');
+
+// }e
+
+
+
+
+// let users = {
+//   user1: {
+//     id: 1,
+//     name: 'ArgeK',
+//     age: 16
+//   },
+//   user2: {
+//     id: 2,
+//     name: 'ARanai',
+//     age: 20
+//   },
+//   user3: {
+//     id: 3,
+//     name: 'ATANnai',
+//     age: 20
+//   },
+//   user4: {
+//     id: 4,
+//     name: 'AtanAi',
+//     age: 20
+//   },
+// }
+
+// for( i in users){
+//   users[i].name = users[i].name.toLowerCase()
+// }
+// console.log(users);
+
+
+
+
+let user = {
+  user1: {
+    id: 1,
+    name: "Barsbek",
+    status: "barmen",
+    salary: 5000,
+  },
+  user2: {
+    id: 2,
+    name: "Eldos",
+    status: "Povar",
+    salary: 1000,
+  },
+  user3: {
+    id: 3,
+    name: "Aziz",
+    status: "admin",
+    salary: 2000,
+  },
+  user4: {
+    id: 4,
+    name: "Aziz",
+    status: "admin",
+    salary: 4000,
+  },
+  user5: {
+    id: 5,
+    name: "Aziz",
+    status: "Pova",
+    salary: 2000,
+  },
+  user6: {
+    id: 6,
+    name: "Aziz",
+    status: "Pova",
+    salary: 50000000,
+  },
+  user7: {
+    id: 7,
+    name: "Aziz",
+    status: "kassa",
+    salary: 250000,
+  },
+};
+
+let foods = {
+  food1: {
+    id: 1,
+    name: "Burger",
+    cost: 100,
+  },
+  food2: {
+    id: 2,
+    name: "cheesburger",
+    cost: 150,
+  },
+  food3: {
+    id: 3,
+    name: "Plov",
+    cost: 100,
+  },
+  food4: {
+    id: 4,
+    name: "samsa",
+    cost: 100,
+  },
+};
+
+
+
+function foodsDelate(workerId,foodId) {
+  
+}
+foodsDelate(4,1)
 
 

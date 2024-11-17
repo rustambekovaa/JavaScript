@@ -9,7 +9,7 @@ let cat12="shaurma"
 let cat21="pay"
 let cat22="peperony"
 let cat31="cola"
-let cat32="fanta"
+let cat32="fanta"   
 let cat1cost=120
 let cat2cost=170
 let cat3cost=70
@@ -18,6 +18,9 @@ let film2 = "Разбой"
 let filmCost = 120
 let popkorn = "Поп-корн"
 let popkornCost = 120
+
+
+
 while (true){
     let vacation=+prompt("1.Cafe\n 2.Kino\n 3.History")
         if (vacation==1){     

@@ -20,16 +20,6 @@ let drinkCost2=60;
 let foodCost=120;
 
 
-
-
-
-
-
-
-
-
-
-
 let p =+prompt(` 1)${drink1} \n  2)${drink2} \n  3)${food}`)
 if (p==1){
     alert(`Вы купили ${drink1} \n ${mobey-drink1Cost}  сом`)
@@ -40,6 +30,8 @@ else if (p==2){
 else{
     alert(` Вы купили ${food} \n У вас осталось ${mobey-foodCost}  сом`)
 }
+
+
 
 // // ЗАДАЧА 1 Проверить, является ли число четным или нечетным.f
 

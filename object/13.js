@@ -59,7 +59,30 @@ let students = {
     name:"Ali", 
     age:20 
   }, 
+  student11:{ 
+    id:11, 
+    grade:"UX-UI", 
+    name:"Ali", 
+    age:45 
+  }, 
 }
+
+function findCount() {
+  let newobj = {}
+  for(let i in students){
+    if(students[i].age in newobj ){
+      newobj[students[i].age] += 1
+    }
+    else{
+      newobj[students[i].age]  = 1
+    }
+  }
+  console.log(newobj);
+  
+}
+findCount()
+
+
 
 // function devs() {
 //    var devs2 = {}
@@ -75,17 +98,22 @@ let students = {
 // devs()
 
 
-function age(){
-  let age2 = {}
-  for ( i in students){
-    if (students[i].age in age2 ){
-      age2[ students[i].age] +=1 
-    }else{
-      age2[ students[i].age] =1 
-    }
-  } console.log(age2); 
+// function age(){
+//   let age2 = {}
+//   for ( i in students){
+//     if (students[i].age in age2 ){
+//       age2[ students[i].age] +=1 
+//     }else{
+//       age2[ students[i].age] =1 
+//     }
+//   } console.log(age2); 
+// }
+// age()
 
 
 
-}
-age()
+
+
+
+
+

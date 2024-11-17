@@ -1,0 +1,23 @@
+let students = { 
+    student1:{ 
+      id:1, 
+      grade:"Front-End", 
+      name:"Majid", 
+      email:"ruatmbekova@gmail.com",
+      age:18 
+    }, 
+    student2:{ 
+      id:2, 
+      grade:"Front-End", 
+      name:"Nurullo", 
+      email:"Arlenova@gmail.com",
+      age:20 
+    }, 
+    student3:{ 
+      id:3, 
+      grade:"Front-End", 
+      name:"Baibolot", 
+      email:"zakirov@gmail.com",
+      age:20 
+    }, 
+  }

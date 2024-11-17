@@ -80,7 +80,7 @@ function getSum() {
             }
              
         }
-    }
+    } 
     console.log(customers);
 }
 getSum()

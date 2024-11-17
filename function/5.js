@@ -187,8 +187,7 @@ function func1(){
         let Magel=+prompt(`1.${tovar1} \n 2.${tovar2} \n 3.${tovar3} \n 4.${tovar2}`)
         if( Magel==1){
             bill+=cost1
-            card+=tovar1 + ","
-            
+            card+=tovar1 + "," 
         }
         else if( Magel==2){
             bill+=cost2

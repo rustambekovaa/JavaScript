@@ -103,19 +103,20 @@ let category = [
 
 
 
-// predmets = [{id:1, Pred:"Math"}, {id:2, Pred:"Fiz"}];
-// temas = [{id:1, name: "vbnm", catId:1}, {id:2, name: "mnhgfds", catId:1}, {id:3, name: "vbnm", catId:2}];
+let predmets = [{id:1, Pred:"Math"}, {id:2, Pred:"Fiz"}];
 
-// function getCat() {
-//   predmets.forEach(elempred => {
-//     const tem = temas.filter(elemtem => elemtem.catId === elempred.id);
-//     elempred.temas = tem;
-//   });
+let temas = [{id:1, name: "vbnm", catId:1}, {id:2, name: "mnhgfds", catId:1}, {id:3, name: "vbnm", catId:2}];
 
-// }
+function getCat() {
+  predmets.forEach(elempred => {
+    const tem = temas.filter(elemtem => elemtem.catId === elempred.id);
+    elempred.temas = tem;
+  });
 
-// getCat();
-// console.log(predmets);
+}
+
+getCat();
+console.log(predmets);
 
 
 

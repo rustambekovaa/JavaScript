@@ -79,11 +79,15 @@ const massive=[
     },
 ]
     
+
 const newUser=massive.find(function(i){
         if(i.price < k){
-        console.log(i);
+            alert(i)
         }
     });
+
+
+
 /////////////////////////////////////////////////////////////////////////
 // const newCost=+prompt("Введити процент скидки который вы хотите")
 

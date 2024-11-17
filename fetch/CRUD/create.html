@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css.css">
+    <title>News Api</title>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <form name="createNewsForm">
+            <div class="mb-4">
+                <input type="text" name="slug" class="form-control" placeholder="Slug">
+            </div>
+            <div class="mb-4">
+                <input type="text" name="name" class="form-control" placeholder="Name">
+            </div>
+            <div class="mb-4">
+                <input type="file" accept="image/*" name="image" class="form-control">
+            </div>
+            <div class="mb-4">
+                <textarea name="description" class="form-control" placeholder="Description"></textarea>
+            </div>
+            <div class="mb-4">
+                <textarea name="content" class="form-control" placeholder="Content"></textarea>
+            </div>
+            <div class="mb-4">
+                <label>
+                    <span>Is published</span>
+                    <input type="checkbox" name="is_published">
+                </label>
+
+            </div>
+            <div class="mb-4">
+                <select name="category" class="form-select">
+                    <option>Choose category</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <select name="tags" class="form-select" multiple>
+                    <option>Choose tags</option>
+                </select>
+            </div>
+            <div><button class="btn btn-primary w-100 d-block">Create</button></div>
+        </form>
+    </div>
+
+    <script>
+
+        const token = prompt('Enter token', 'caf9ff149e8327e4ddef18a334dcb637c2fdd059')
+        const newsForm = document.forms.createNewsForm
+
+        const categorySelect = newsForm.category
+        const tagsSelect = newsForm.tags
+
+        const setSelectValues = async (select, url) => {
+            const res = await fetch(url)
+            if (res.status === 200) {
+
+                const data = await res.json()
+                for (item of data) {
+                    const option = document.createElement('option')
+                    option.text = item.name
+                    option.value = item.id
+                    select.add(option)
+                }
+
+            } else alert('Error getting items')
+        }
+
+        const main = async () => {
+            setSelectValues(categorySelect, 'https://news-api.prolabagency.com/api/v1/categories/?use_pagination=false')
+            setSelectValues(tagsSelect, 'https://news-api.prolabagency.com/api/v1/tags/?use_pagination=false')
+        }
+
+        newsForm.addEventListener('submit', async (e) => {
+            e.preventDefault()
+
+            /*
+            const slug = newsForm.slug.value
+            const name = newsForm.name.value
+            const image = newsForm.image.files[0]
+            const description = newsForm.description.value
+            const content = newsForm.content.value
+            const is_published = newsForm.is_published.value
+            const category = +newsForm.category.value
+            
+            const tags = Array.from(newsForm.tags.selectedOptions).map(item => +item.value)
+            */
+
+            const body = new FormData(newsForm)
+            const res = await fetch('https://news-api.prolabagency.com/api/v1/news/', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Token ${token}`,
+                    // 'Content-Type': 'application/json',
+                },
+                body,
+            })
+
+            if (res.status == 201) {
+                alert('News created succesfully')
+                console.log(await res.json())
+                newsForm.clear()
+            } else {
+                alert('Bad request')
+                console.log(await res.json())
+            }
+
+        })
+        main()
+    </script>
+</body>
+
+</html>

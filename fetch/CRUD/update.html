@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css.css">
+    <title>News Api</title>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="container mx-auto py-10">
+        <form name="updateNewsForm" class="bg-white p-6 rounded shadow-md">
+            <div class="mb-4">
+                <input type="text" name="slug" class="w-full p-2 border rounded" placeholder="Slug">
+            </div>
+            <div class="mb-4">
+                <input type="text" name="name" class="w-full p-2 border rounded" placeholder="Name">
+            </div>
+            <div class="mb-4">
+                <input type="file" accept="image/*" name="image" class="w-full p-2 border rounded">
+            </div>
+            <div class="mb-4">
+                <textarea name="description" class="w-full p-2 border rounded" placeholder="Description"></textarea>
+            </div>
+            <div class="mb-4">
+                <textarea name="content" class="w-full p-2 border rounded" placeholder="Content"></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="flex items-center">
+                    <input type="checkbox" name="is_published" class="mr-2">
+                    <span>Is published</span>
+                </label>
+            </div>
+            <div class="mb-4">
+                <select name="category" class="w-full p-2 border rounded">
+                    <option>Choose category</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <select name="tags" class="w-full p-2 border rounded" multiple>
+                    <option>Choose tags</option>
+                </select>
+            </div>
+            <div>
+                <button class="w-full bg-blue-500 text-white py-2 rounded">Save</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const currentUrl = window.location.href
+        const params = Object.fromEntries(new URL(currentUrl),searchParams.entries())
+        const id = +params.news
+        const token = prompt('Enter token','caf9ff149e8327e4ddef18a334dcb637c2fdd059')
+        const newsForm = document.forms.updateNewsForm
+        const categorySelect = newsForm.category
+        const tagsSelect = newsForm.tags
+
+
+        const setSelectValues = async(select,url) =>{
+            const  res = await fetch(url)
+            if(res.status ===200){
+                const data = await res.json()
+                for(item of data){
+                    const option = document.createElement('option')
+                    option.text = item.name
+                    option.value = item.id
+                    select.add(option)
+                }
+            }else {
+                alert('Error getting items')
+            }
+        }
+        const populateForm = async (news_id) => {
+            const res = await fetch(`https://news-api.prolabagency.com/api/v1/news/${news_id}/`, {
+                headers: {
+                    'Authorization': `Token ${token}`
+                }
+            })
+            if (res.status === 200) {
+                const data = await res.json()
+                newsForm.slug.value = data.slug
+                newsForm.name.value = data.name
+                newsForm.description.value = data.description
+                newsForm.content.value = data.content
+                newsForm.is_published.checked = data.is_published
+                categorySelect.value = +data.category.id
+
+                const tags = Array.from(tagsSelect.options)
+
+                tags.forEach(option => {
+                    const condition = data.tags.some(item => item.id === +option.value)
+                    if (condition) {
+                        option.selected = true
+                    }
+                })
+            } else {
+                alert('Error fetching news data')
+            }
+        }
+
+        newsForm.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const body = new FormData()
+            body.append('slug', newsForm.slug.value)
+            body.append('name', newsForm.name.value)
+            if (newsForm.image.files[0]) body.append('image', newsForm.image.files[0])
+            body.append('description', newsForm.description.value)
+            body.append('content', newsForm.content.value)
+            body.append('is_published', newsForm.is_published.checked)
+            body.append('category', newsForm.category.value)
+
+            const selectedTags = Array.from(newsForm.tags.selectedOptions).map(item => +item.value)
+            selectedTags.forEach(tag => body.append('tags', tag))
+            
+
+            const res = await fetch(`https://news-api.prolabagency.com/api/v1/news/${news_id}/`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Token ${token}`,
+                },
+                body,
+            })
+
+            if (res.status === 200) {
+                alert('News updated successfully')
+                console.log(await res.json())
+            } else {
+                alert('Bad request')
+                console.log(await res.json())
+            }
+        })
+
+        const main = async () => {
+            await setSelectValues(categorySelect, 'https://news-api.prolabagency.com/api/v1/categories/?use_pagination=false')
+            await setSelectValues(tagsSelect, 'https://news-api.prolabagency.com/api/v1/tags/?use_pagination=false')
+            if (news_id) await populateForm(news_id)
+        }
+
+        main()
+
+
+    </script>
+</body>
+
+</html>

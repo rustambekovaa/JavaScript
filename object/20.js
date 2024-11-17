@@ -51,6 +51,20 @@ let user = {
     },
 }
 
+// function som(id) {
+    
+// }
+// som(10)
+console.log(700);
+
+
+
+
+
+
+
+
+
 // function getobj(letter){
 // for ( i in user){
 //     letter = letter.toUpperCase()
@@ -75,3 +89,10 @@ let user = {
 // }
 // getobj("1000s")
  
+
+
+
+
+  
+
+

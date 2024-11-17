@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Item Details</title>
+</head>
+
+<body>
+    <div class="container mx-auto px-4 mt-5">
+        <div class="" id="news_container">
+        </div>
+    </div>
+   
+
+    <script>
+        let currentUrl = window.location.href
+
+        let params = Object.fromEntries(new URL(currentUrl).searchParams.entries())
+        let id = +params.news
+
+        const news_conteiner = document.querySelector('#news_container')
+
+        let main = async () =>{
+            const resolve = await fetch(`https://news-api.prolabagency.com/api/v1/news/${id}/`)
+            if (resolve.status == 200) {
+                const data = await resolve.json()
+                news_conteiner.innerHTML = `
+                        <div class="flex gap-10">
+                            <img src="${data.image}" class="d-block w-[1500px] mb-4" alt="">
+                            <div>
+                              <h5 class="text-xl">${data.name} | ${data.category.name}</h5>
+                              <p class="mt-3">${data.description}</p>
+                              <p class="card-text">${data.content}</p>
+                              <p class="text-end"> ${new Date(data.created_at).toLocaleDateString()}</p>
+                            </div>
+                        </div>
+   
+                    `
+            }
+
+        }
+        main()
+    </script>
+
+</body>
+</html>

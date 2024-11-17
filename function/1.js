@@ -110,6 +110,9 @@
 //     }
 //   alert(`Год ${k} по восточному календарю соответствует животному: ${p}`);
 
+
+
+
 // let count=""
 // let b=prompt("Напишите  слово")
 // for (let i=b.length-1;i>=0;i--){
@@ -148,19 +151,21 @@
 // console.log(k())
 
 
-// function k(){
+// let state= prompt("Столица Кр.")
+// function k(name){
 //     for(let i=0;i<4;i++){
-//         let state=prompt("Столица Кр.")
-//         if (state=="Бишкек"){
+//         if (name=="Бишкек"){
 //             alert(" молодец")
 //             break
 //         }
-//         else  if(state!="Бишкек"){
+//         else  if(name!="Бишкек"){
 //             alert(" повторите еще")
 //         }
 //     }
 // }
-// k()
+// k(state)
+
+
 
 // function square(width, height){ 
 //     let result = "" 
@@ -184,23 +189,50 @@
 //     square(4,4)
 
 
+
+function square(width, height){ 
+    let result = "" 
+    for(let i = 0; i < width; i++){ 
+        for(let j = 0; j< height; j++){ 
+            if(i === j){ 
+                result+= "1" 
+            }  
+            else if (i+j==width-1){
+                result+= "2" 
+            }
+            else{ 
+                result+="*" 
+            } 
+        } 
+        result+= "\n" 
+    } 
+    console.log(result); 
+    } 
+    square(5,5)
+
+
+
+
 // function square(width, height){ 
 //     let result = "" 
 //     for(let i = 0; i < width; i++){ 
 //         for(let j = 0; j< height; j++){ 
 //             if(i === j){ 
-//                 result+= "1" 
+//                 result+= "0" 
 //             } 
-//             else if (i+j==width-1){
+//             else if (i>j){
 //                 result+= "2" 
-//             }
+//             }  
 //             else{ 
-//                 result+="*" 
+//                 result+="1" 
 //             } 
 //         } 
 //         result+= "\n" 
 //     } 
 //     console.log(result); 
 //     } 
-//     square(5,5)
+//     square(4,4)
+
+
+
 
